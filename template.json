@@ -84,6 +84,908 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/airsonic-banner.png?token=ANVETBBS354MEUT4HJ3GI6TBFXMXO",
             "network_mode": "bridge",
             "type": 1
+        },
+        {
+            "title": "Apprise API",
+            "name": "apprise-api",
+            "image": "linuxserver/apprise-api",
+            "description": "Apprise-api Takes advantage of Apprise through your network with a user-friendly API.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/apprise-api"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/apprise-api.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Audacity",
+            "name": "audacity",
+            "image": "linuxserver/audacity",
+            "description": "Audacity is an easy-to-use, multi-track audio editor and recorder. Developed by a group of volunteers as open source.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/audacity"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/audacity-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Babybuddy",
+            "name": "babybuddy",
+            "image": "linuxserver/babybuddy",
+            "description": "Babybuddy is a buddy for babies! Helps caregivers track sleep, feedings, diaper changes, tummy time and more to learn about and predict baby's needs without (as much) guess work.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/babybuddy"
+                }
+            ],
+            "env": [
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/babybuddy-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Bazarr",
+            "name": "bazarr",
+            "image": "linuxserver/bazarr",
+            "description": "Bazarr is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "6767:6767/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/bazarr"
+                },
+                {
+                    "container": "/movies",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/bazarr.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Beets",
+            "name": "beets",
+            "image": "linuxserver/beets",
+            "description": "Beets is a music library manager and not, for the most part, a music player.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8337:8337/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/beets"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/beets-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "BOINC",
+            "name": "boinc",
+            "image": "linuxserver/boinc",
+            "description": "BOINC is a platform for high-throughput computing on a large scale (thousands or millions of computers). It can be used for volunteer computing (using consumer devices) or grid computing (using organizational resources). It supports virtualized, parallel, and GPU-based applications.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/boinc"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PASSWORD",
+                    "default": "",
+                    "description": "optional"
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/dev/dri",
+                    "host": "/dev/dri"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/BOINC_logo.svg.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Booksonic-Air",
+            "name": "booksonic-air",
+            "image": "linuxserver/booksonic-air",
+            "description": "Booksonic-air is a platform for accessing the audibooks you own wherever you are. At the moment the platform consists of Booksonic Air - A server for streaming your audiobooks, successor to the original Booksonic server and based on Airsonic. Booksonic App - An DSub based Android app for connection to Booksonic-Air servers.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "4040:4040/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/booksonic"
+                },
+                {
+                    "container": "/audiobooks",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/audiobooks"
+                },
+                {
+                    "container": "/podcast",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/podcasts"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/booksonic.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Calibre",
+            "name": "calibre",
+            "image": "linuxserver/calibre",
+            "description": "Calibre is a powerful and easy to use e-book manager. Users say it’s outstanding and a must-have. It’ll allow you to do nearly everything and it takes things a step beyond normal e-book software. It’s also completely free and open source and great for both casual users and computer experts.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp",
+                "8081:8081/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/calibre"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PASSWORD",
+                    "default": "",
+                    "description": "optional"
+                },
+                {
+                    "name": "CLI_ARGS",
+                    "default": "",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/calibre.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Calibre-Web",
+            "name": "calibre-web",
+            "image": "linuxserver/calibre-web",
+            "description": "Calibre-web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database. It is also possible to integrate google drive and edit metadata and your calibre library through the app itself.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8083:8083/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/calibre-web"
+                },
+                {
+                    "container": "/books",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/calibre"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/calibre-web-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Code-Server",
+            "name": "code-server",
+            "image": "linuxserver/code-server",
+            "description": "Code-server is VS Code running on a remote server, accessible through the browser.",
+            "platform": "linux",
+            "ports": [
+                "8443:8443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/code-server"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PASSWORD",
+                    "default": "password",
+                    "description": "optional"
+                },
+                {
+                    "name": "HASHED_PASSWORD",
+                    "default": "",
+                    "description": "optional"
+                },
+                {
+                    "name": "SUDO_PASSWORD",
+                    "default": "",
+                    "description": "optional"
+                },
+                {
+                    "name": "SUDO_PASSWORD_HASH",
+                    "default": "",
+                    "description": "optional"
+                },
+                {
+                    "name": "PROXY_DOMAIN",
+                    "default": "code-server.my.domain",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/code-server.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "COPS",
+            "name": "cops",
+            "image": "linuxserver/cops",
+            "description": "COPS links to your Calibre library database and allows downloading and emailing of books directly from a web browser and provides a OPDS feed to connect to your devices.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/cops"
+                },
+                {
+                    "container": "/books",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/calibre"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/cops-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Couchpotato",
+            "name": "couchpotato",
+            "image": "linuxserver/couchpotato",
+            "description": "Couchpotato is an automatic NZB and torrent downloader. You can keep a movies I want list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "5050:5050/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/couchpotato"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/movies",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/couchpotato.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Daapd",
+            "name": "daapd",
+            "image": "linuxserver/daapd",
+            "description": "Daapd (iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), Chromecast, MPD and internet radio.",
+            "platform": "linux",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/daapd"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/daapd-logo.png",
+            "network_mode": "host",
+            "type": 1
+        },
+        {
+            "title": "Darktable",
+            "name": "darktable",
+            "image": "linuxserver/darktable",
+            "description": "Darktable is an open source photography workflow application and raw developer. A virtual lighttable and darkroom for photographers. It manages your digital negatives in a database, lets you view them through a zoomable lighttable and enables you to develop raw images and enhance them.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n-  http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n- http://yourhost:3000/?login=true\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/darktable"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/darktable-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Davos",
+            "name": "davos",
+            "image": "linuxserver/davos",
+            "description": "Davos is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.",
+            "platform": "linux",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/davos"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/davos.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "DDClient",
+            "name": "ddclient",
+            "image": "linuxserver/ddclient",
+            "description": "Ddclient is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.",
+            "platform": "linux",
+            "note": "Get dynamic IP from Fritz.Box\n\nIf ddclient shall fetch the dynamic (public) IP-address from a fritz.box (AVM) add the following line to /config/ddclient.conf:\n\nuse=cmd, cmd=/etc/ddclient/get-ip-from-fritzbox",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/ddclient"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/ddclient-logo.png",
+            "network_mode": "host",
+            "type": 1
+        },
+        {
+            "title": "Deluge",
+            "name": "deluge",
+            "image": "linuxserver/deluge",
+            "description": "Deluge is a lightweight, Free Software, cross-platform BitTorrent client.",
+            "platform": "linux",
+            "note": "The admin interface is available at http://SERVER-IP:8112 with a default user/password of admin/deluge.\n\nTo change the password (recommended) log in to the web interface and go to Preferences->Interface->Password.\n\nChange the downloads location in the webui in Preferences->Downloads and use /downloads for completed downloads.\n\nChange the inbound port to 6881 (or whichever port you've mapped for the container) under Preferences->Network, otherwise random ports will be used.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8112:8112/tcp",
+                "6881:6881/tcp",
+                "6881:6881/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/deluge"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "DELUGE_LOGLEVEL",
+                    "default": "error",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/deluge-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "digiKam",
+            "name": "digikam",
+            "image": "linuxserver/digikam",
+            "description": "digiKam: Professional Photo Management with the Power of Open Source",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\nhttp://yourhost:3000/ By default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\nhttp://yourhost:3000/?login=true",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/digikam"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/digikam.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Dillinger",
+            "name": "dillinger",
+            "image": "linuxserver/dillinger",
+            "description": "Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.",
+            "platform": "linux",
+            "note": "Access the webui at http://your-ip:8080 , keep in mind that storage for this application is in your browser session not server side. Only plugin configurations will ever be stored server side.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/dillinger"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/dillinger.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "DokuWiki",
+            "name": "dokuwiki",
+            "image": "linuxserver/dokuwiki",
+            "description": "Dokuwiki is a simple to use and highly versatile Open Source wiki software that doesn't require a database. It is loved by users for its clean and readable syntax. The ease of maintenance, backup and integration makes it an administrator's favorite. Built in access controls and authentication connectors make DokuWiki especially useful in the enterprise context and the large number of plugins contributed by its vibrant community allow for a broad range of use cases beyond a traditional wiki.",
+            "platform": "linux",
+            "note": "Upon first install go to http://$IP:$PORT/install.php once you have completed the setup, restart the container, login as admin and set \"Use nice URLs\" in the admin/Configuration Settings panel to .htaccess and tick Use slash as namespace separator in URLs to enable nice URLs you will find the webui at http://$IP:$PORT/, for more info see Dokuwiki",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/dokuwiki"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/dokuwiki-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Domoticz",
+            "name": "domoticz",
+            "image": "linuxserver/domoticz",
+            "description": "Domoticz is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.",
+            "platform": "linux",
+            "note": "To configure Domoticz, go to the IP of your docker host on the port you configured (default 8080), and add your hardware in Setup > Hardware. The user manual is available at www.domoticz.com",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp",
+                "6144:6144/tcp",
+                "1443:1443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/domoticz"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "WEBROOT",
+                    "default": "domoticz",
+                    "label": "optional"
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/path/to/device",
+                    "host": "/path/to/device"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/domoticz.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Double Commander",
+            "name": "doublecommander",
+            "image": "linuxserver/doublecommander",
+            "description": "Double Commander is a free cross platform open source file manager with two panels side by side. It is inspired by Total Commander and features some new ideas.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n    http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n    http://yourhost:3000/?login=true\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/doublecommander"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/doublecommander-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "DuckDNS",
+            "name": "duckdns",
+            "image": "linuxserver/duckdns",
+            "description": "Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+            "platform": "linux",
+            "note": "\n    Go to the duckdns website, register your subdomain(s) and retrieve your token\n    Create a container with your subdomain(s) and token\n    It will update your IP with the DuckDNS service every 5 minutes\n",
+            "restart_policy": "unless-stopped",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/duckdns"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "SUBDOMAINS",
+                    "default": "subdomain1,subdomain2"
+                },
+                {
+                    "name": "TOKEN",
+                    "default": "token"
+                },
+                {
+                    "name": "LOG_FILE",
+                    "default": "false",
+                    "label": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/duckdns.png",
+            "network_mode": "host",
+            "type": 1
         }
     ]
 }
