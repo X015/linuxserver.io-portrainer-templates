@@ -1442,6 +1442,1054 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/habridge.png",
             "network_mode": "bridge",
             "type": 1
+        },
+        {
+            "title": "Headphones",
+            "name": "headphones",
+            "image": "linuxserver/headphones",
+            "description": "Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.",
+            "platform": "linux",
+            "ports": [
+                "8181:8181/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/headphones"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/headphones-banner.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Healthchecks",
+            "name": "healthchecks",
+            "image": "linuxserver/healthchecks",
+            "description": "Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.",
+            "platform": "linux",
+            "note": "Access the WebUI at http://serverIP:port",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/healthchecks"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "SITE_ROOT",
+                    "default": "<SITE_ROOT>",
+                    "label": "",
+                    "description": "The site's top-level URL and the port it listens to if differrent than 80 or 443 (e.g., https://healthchecks.example.com:8000)"
+                },
+                {
+                    "name": "SITE_NAME",
+                    "default": "<SITE_NAME>",
+                    "description": "The site's name (e.g., \"Example Corp HealthChecks\")"
+                },
+                {
+                    "name": "DEFAULT_FROM_EMAIL",
+                    "default": "<DEFAULT_FROM_EMAIL>",
+                    "description": "From email for alerts"
+                },
+                {
+                    "name": "EMAIL_HOST",
+                    "default": "<EMAIL_HOST>",
+                    "description": "SMTP host"
+                },
+                {
+                    "name": "EMAIL_PORT",
+                    "default": "<EMAIL_PORT>",
+                    "description": "SMTP port"
+                },
+                {
+                    "name": "EMAIL_HOST_USER",
+                    "default": "<EMAIL_HOST_USER>",
+                    "description": "SMTP user"
+                },
+                {
+                    "name": "EMAIL_HOST_PASSWORD",
+                    "default": "<EMAIL_HOST_PASSWORD>",
+                    "description": "SMTP password"
+                },
+                {
+                    "name": "EMAIL_USE_TLS",
+                    "default": "<True or False>",
+                    "description": "Use TLS for SMTP (True or False)"
+                },
+                {
+                    "name": "ALLOWED_HOSTS",
+                    "default": "<ALLOWED_HOSTS>",
+                    "description": "array of valid hostnames for the server [\"test.com\",\"test2.com\"] or \"*\""
+                },
+                {
+                    "name": "SUPERUSER_EMAIL",
+                    "default": "<SUPERUSER_EMAIL>",
+                    "description": "Superuser email"
+                },
+                {
+                    "name": "SUPERUSER_PASSWORD",
+                    "default": "<SUPERUSER_PASSWORD>",
+                    "description": "Superuser password"
+                },
+                {
+                    "name": "REGENERATE_SETTINGS",
+                    "default": "<True or False>",
+                    "description": "Defaults to False. Set to true to always override the local_settings.py file with values from environment variables. Do not set to True if you have made manual modifications to this file."
+                },
+                {
+                    "name": "SITE_LOGO_URL",
+                    "default": "<SITE_LOGO_URL>",
+                    "description": "Custom site logo URL"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/healthchecks-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Heimdall",
+            "name": "heimdall",
+            "image": "linuxserver/heimdall",
+            "description": "Heimdall is a way to organise all those links to your most used web sites and web applications in a simple way. Simplicity is the key to Heimdall. Why not use it as your browser start page? It even has the ability to include a search bar using either Google, Bing or DuckDuckGo.",
+            "platform": "linux",
+            "note": "Adding password protection\n\nThis image now supports password protection through htpasswd. Run the following command on your host to generate the htpasswd file docker exec -it heimdall htpasswd -c /config/nginx/.htpasswd <username>. Replace ",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/heimdall"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/heimdall-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Home Assistant",
+            "name": "homeassistant",
+            "image": "linuxserver/homeassistant",
+            "description": "Homeassistant is open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.\n\nhomeassistant",
+            "platform": "linux",
+            "note": "The Webui can be found at http://your-ip:8123. Follow the wizard to set up Home Assistant.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8123:8123/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/homeassistant"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/home-assistant-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "HTPC Manager",
+            "name": "htpcmanager",
+            "image": "linuxserver/htpcmanager",
+            "description": "Htpcmanager is a front end for many htpc related applications.",
+            "platform": "linux",
+            "note": "The webui is found at port 8085. Smartmontools and psutil have not been included, you can safely ignore the warning error in the log.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8085:8085/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/htpcmanager"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/htpcmanager-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "IPFS",
+            "name": "ipfs",
+            "image": "linuxserver/ipfs",
+            "description": "Ipfs - A peer-to-peer hypermedia protocol designed to make the web faster, safer, and more open.",
+            "platform": "linux",
+            "note": "In order to push files beyond your local gateway you have to make sure port 4001 is forwarded to the internet. This is required for IPFS peers to reach in and grab your files so public gateways can serve them.\n\nAccess the webui at http://localhost , if not using localhost scroll to the bottom of the page and set the API Address setting to IE http://192.168.1.10:5001 , from there you can upload and manage files you push to IPFS. Your gateway to access IPFS files is http://localhost:8080/ipfs/YOUR-FILE-HASH-HERE . You can also simply use public IPFS gateways like:\n\n    Cloudflare - https://cloudflare-ipfs.com/ipfs/YOUR-FILE-HASH-HERE\n    IPFS.io - https://ipfs.io/ipfs/YOUR-FILE-HASH-HERE\n    Eternum.io - https://ipfs.eternum.io/ipfs/YOUR-FILE-HASH-HERE\n\nCloudflare is a solid option as they actually edge cache the files on their CDN so even if your node pinning the item goes down for periods of time their cache will last up to a month.\n\nFor more on using IPFS please read the docs here",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "4001:4001/tcp",
+                "5001:5001/tcp",
+                "8080:8080/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/ipfs"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/ipfs-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Jackett",
+            "name": "jackett",
+            "image": "linuxserver/jackett",
+            "description": "Jackett works as a proxy server: it translates queries from apps (Sonarr, SickRage, CouchPotato, Mylar, etc) into tracker-site-specific http queries, parses the html response, then sends results back to the requesting software. This allows for getting recent uploads (like RSS) and performing searches. Jackett is a single repository of maintained indexer scraping & translation logic - removing the burden from other apps.",
+            "platform": "linux",
+            "note": "The web interface is at <your-ip>:9117 , configure various trackers and connections to other apps there. More info at Jackett.\n\nDisable autoupdates in the webui to prevent jackett crashing, the image is refreshed when new versions are released.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9117:9117/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/jackett"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "AUTO_UPDATE",
+                    "default": "true",
+                    "description": "optional",
+                    "label": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/jackett-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Jellyfin",
+            "name": "jellyfin",
+            "image": "linuxserver/jellyfin",
+            "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps. Jellyfin is descended from Emby's 3.5.2 release and ported to the .NET Core framework to enable full cross-platform support. There are no strings attached, no premium licenses or features, and no hidden agendas: just a team who want to build something better and work together to achieve it.",
+            "platform": "linux",
+            "note": "Webui can be found at http://<your-ip>:8096\n\nMore information can be found on the official documentation here (https://jellyfin.org/docs/general/quick-start.html)",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8096:8096/tcp",
+                "8920:8920/tcp",
+                "7359:7359/udp",
+                "1900:1900/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/jellyfin"
+                },
+                {
+                    "container": "/tvshows",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                },
+                {
+                    "container": "/movies",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/dev/dri",
+                    "host": "/dev/dri"
+                },
+                {
+                    "container": "/dev/vcsm",
+                    "host": "/dev/vcsm"
+                },
+                {
+                    "container": "/dev/vchiq",
+                    "host": "/dev/vchiq"
+                },
+                {
+                    "container": "/dev/video10",
+                    "host": "/dev/video10"
+                },
+                {
+                    "container": "/dev/video11",
+                    "host": "/dev/video11"
+                },
+                {
+                    "container": "/dev/video12",
+                    "host": "/dev/video12"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/jellyfin-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Kanzi",
+            "name": "kanzi",
+            "image": "linuxserver/kanzi",
+            "description": "Kanzi, formerly titled Kodi-Alexa, this custom skill is the ultimate voice remote control for navigating Kodi. It can do anything you can think of (100+ intents). This container also contains lexigram-cli to setup Kanzi with an Amazon Developer Account and automatically deploy it to Amazon.",
+            "platform": "linux",
+            "note": "Initial setup\n\n    Once you start the container for the first time, you need to perform some steps before use.\n    1.    Create an Amazon Developer Account here.\n    2.    Open a terminal in the /config directory of the docker container docker exec -itw /config kanzi bash\n    3.   Enter lexigram login --no-browser true to setup your AWS credentials and copy the URL into a browser, login to your Amazon Developer Account and copy/paste the resulting authorisation code back into the\n           Terminal and press enter.\n    4.   Edit the file kodi.config according to your local setup and this will be used by the included gunicorn server to respond to requests.\n    5.   Restart the container to automatically deploy the Kanzi skill.\n    6.   Reverse proxy this container with our LetsEncrypt container which contains preconfigured templates for reverse proxying the Kanzi container on either a subdomain or subfolder utilising Docker custom                                                                                         networking. Alternatively, if you already have an Nginx reverse proxy set up, you can use one of these location blocks to reverse proxy Kanzi to a subfolder or subdomain respectively.\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/kanzi"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "URL_ENDPOINT",
+                    "default": "https://server.com/kanzi/"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/kanzi-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "LazyLibrarian",
+            "name": "lazylibrarian",
+            "image": "linuxserver/lazylibrarian",
+            "description": "Lazylibrarian is a program to follow authors and grab metadata for all your digital reading needs. It uses a combination of Goodreads Librarything and optionally GoogleBooks as sources for author info and book info. This container is based on the DobyTang fork.",
+            "platform": "linux",
+            "note": "Access the webui at http://<your-ip>:5299/home, for more information check out Lazylibrarian.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "5299:5299/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/lazylibrarian"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/books",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/books"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/lazylibrarian-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "LDAP-Auth",
+            "name": "ldap-auth",
+            "image": "linuxserver/ldap-auth",
+            "description": "Ldap-auth software is for authenticating users who request protected resources from servers proxied by nginx. It includes a daemon (ldap-auth) that communicates with an authentication server, and a webserver daemon that generates an authentication cookie based on the user’s credentials. The daemons are written in Python for use with a Lightweight Directory Access Protocol (LDAP) authentication server (OpenLDAP or Microsoft Windows Active Directory 2003 and 2012).",
+            "platform": "linux",
+            "note": "\n    This container itself does not have any settings and it relies on the pertinent information passed through in http headers of incoming requests. Make sure that your webserver is set up with the right config.\n\n    Here's a sample config: https://github.com/nginxinc/nginx-ldap-auth/blob/master/nginx-ldap-auth.conf\n\n    Unlike the upstream project, this image encodes the cookie information with fernet, using a randomly generated key during container creation (or optionally user defined).\n\n    Also unlike the upstream project, this image serves the login page at /ldaplogin (as well as /login) to prevent clashes with reverse proxied apps that may also use /login for their internal auth.\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8888:8888/tcp",
+                "9000:9000/tcp"
+            ],
+            "env": [
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "FERNETKEY",
+                    "default": "#optional"
+                },
+                {
+                    "name": "CERTFILE",
+                    "default": "#optional"
+                },
+                {
+                    "name": "KEYFILE",
+                    "default": "#optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/ldap-auth-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "LibreOffice",
+            "name": "libreoffice",
+            "image": "linuxserver/libreoffice",
+            "description": "LSIO CI\n\nLibreOffice is a free and powerful office suite, and a successor to OpenOffice.org (commonly known as OpenOffice). Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n    http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n    http://yourhost:3000/?login=true\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/libreoffice"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/libreoffice-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "LibreSpeed",
+            "name": "librespeed",
+            "image": "linuxserver/librespeed",
+            "description": "Librespeed is a very lightweight Speedtest implemented in Javascript, using XMLHttpRequest and Web Workers. No Flash, No Java, No Websocket, No Bullshit.",
+            "platform": "linux",
+            "note": "Access the speedtest webui at http://SERVERIP. The results database can be accessed at http://SERVERIP/results/stats.php with the password set.\nThe default template used is based on example-singleServer-full.html. However, all templates are provided for reference at /config/www/. Feel free to customize /config/www/index.html as you like. Delete the file and restart to go back to the image default.\n\nYou can optionally place customized speedtest.js and speedtest_worker.js files under /config/www and they will supersede the defaults after a container start. Keep in mind that once you do so, they will no longer be updated. You can delete them and recreate the container to go back to the image defaults.\n\nIf you are setting up a mysql or postgresql database, you first need to import the tables into your database as described at the following link\nhttps://github.com/librespeed/speedtest/blob/master/doc.md#creating-the-database\n\nTo enable a custom results page set the environment variable CUSTOM_RESULTS=true and start (or restart) the container at least once for /config/www/results/index.php to be created and modify this file to your liking.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/librespeed"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PASSWORD",
+                    "default": "PASSWORD"
+                },
+                {
+                    "name": "CUSTOM_RESULTS",
+                    "default": "false",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_TYPE",
+                    "default": "sqlite",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_NAME",
+                    "default": "DB_NAME",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_HOSTNAME",
+                    "default": "DB_HOSTNAME",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_USERNAME",
+                    "default": "DB_USERNAME",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_PASSWORD",
+                    "default": "DB_PASSWORD",
+                    "description": "optional"
+                },
+                {
+                    "name": "DB_PORT",
+                    "default": "DB_PORT",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/librespeed-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Lidarr",
+            "name": "lidarr",
+            "image": "linuxserver/lidarr",
+            "description": "Lidarr is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+            "platform": "linux",
+            "note": "Access the webui at <your-ip>:8686, for more information check out Lidarr.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8686:8686/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/lidarr"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/lidarr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Limnoria",
+            "name": "limnoria",
+            "image": "linuxserver/limnoria",
+            "description": "Limnoria A robust, full-featured, and user/programmer-friendly Python IRC bot, with many existing plugins. Successor of the well-known Supybot.",
+            "platform": "linux",
+            "note": "If you do not have an existing config you will need to start the container and then run the following wizard command:\n\ndocker exec -it -w /config -u abc limnoria limnoria-wizard",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/limnoria"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/limnoria-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "MariaDB",
+            "name": "mariadb",
+            "image": "linuxserver/mariadb",
+            "description": "Mariadb is one of the most popular database servers. Made by the original developers of MySQL.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3306:3306/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/mariadb"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "MYSQL_ROOT_PASSWORD",
+                    "default": "ROOT_ACCESS_PASSWORD"
+                },
+                {
+                    "name": "MYSQL_DATABASE",
+                    "default": "DB_NAME",
+                    "description": "optional"
+                },
+                {
+                    "name": "MYSQL_USER",
+                    "default": "MYSQL_USER",
+                    "description": "optional"
+                },
+                {
+                    "name": "MYSQL_PASSWORD",
+                    "default": "DB_PASSWORD",
+                    "description": "optional"
+                },
+                {
+                    "name": "REMOTE_SQL",
+                    "default": "http://URL1/your.sql,https://URL2/your.sql",
+                    "description": "optional"
+                },
+                {
+                    "name": "",
+                    "default": "",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/mariadb-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Medusa",
+            "name": "medusa",
+            "image": "linuxserver/medusa",
+            "description": "Medusa is an automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+            "platform": "linux",
+            "note": "Web interface is at <your ip>:8081.\n\nSet paths for downloads, tv-shows to match docker mappings via the webui, for more information check out Medusa (https://pymedusa.com/).",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8081:8081/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/medusa"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000",
+                    "label": ""
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/medusa-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Minetest",
+            "name": "minetest",
+            "image": "linuxserver/minetest",
+            "description": "Minetest (server) is a near-infinite-world block sandbox game and a game engine, inspired by InfiniMiner, Minecraft, and the like.",
+            "platform": "linux",
+            "note": "ou can find the world maps, mods folder and config files in /config/.minetest.\n\nClient and server must be the same version, please browse the tags here to pull the appropriate version for your server:\n\nhttps://hub.docker.com/r/linuxserver/minetest/tags",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "30000:30000/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config/.minetest",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/minetest"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "CLI_ARGS",
+                    "default": "gameid minetest\"",
+                    "description": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/minetest-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Minisatip",
+            "name": "minisatip",
+            "image": "linuxserver/minisatip",
+            "description": "Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.\n\nminisatip",
+            "platform": "linux",
+            "note": "Best used in conjunction with tvheadend (https://github.com/linuxserver/docker-tvheadend)\n\nThere is no setup per se, other than adding your cards for passthrough.\n\nYou can then use your cards as DVB inputs in apps such as tvheadend.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8875:8875/tcp",
+                "554:554/tcp",
+                "1900:1900/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/minisatip"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "RUN_OPTS",
+                    "default": "<parameter>",
+                    "description": "Specify specific run params for minisatip"
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/dev/dvb",
+                    "host": "/dev/dvb"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/minisatip-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "mStream",
+            "name": "mstream",
+            "image": "linuxserver/mstream",
+            "description": "mstream is a personal music streaming server. You can use mStream to stream your music from your home computer to any device, anywhere. There are mobile apps available for both Android and iPhone.",
+            "platform": "linux",
+            "note": "Access the webui at http://<your-ip>:3000\n\nSettings are adjusted through the web ui or via editing of config.json. For more information check out Mstream.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/mstream"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/mstream-logo.webp",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Muximux",
+            "name": "muximux",
+            "image": "linuxserver/muximux",
+            "description": "Muximux is a lightweight portal to view & manage your HTPC apps without having to run anything more than a PHP enabled webserver. With Muximux you don't need to keep multiple tabs open, or bookmark the URL to all of your apps.",
+            "platform": "linux",
+            "note": "Find the web interface at <your-ip>:80 , set apps you wish to use with muximux via the webui. More info: https://github.com/mescon/Muximux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/muximux"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/muximux-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Mylar3",
+            "name": "mylar3",
+            "image": "linuxserver/mylar3",
+            "description": "Mylar3 is an automated Comic Book downloader (cbr/cbz) for use with NZB and torrents written in python. It supports SABnzbd, NZBGET, and many torrent clients in addition to DDL.",
+            "platform": "linux",
+            "note": "The web ui for settings etc, is on <your-ip>:8090 For more detailed setup options, refer to Mylar3 (https://github.com/mylar3/mylar3)",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8090:8090/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/mylar3"
+                },
+                {
+                    "container": "/comics",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/comics"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/mylar-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "MySQL Workbench",
+            "name": "mysql-workbench",
+            "image": "linuxserver/mysql-workbench",
+            "description": "MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Workbench provides data modeling, SQL development, and comprehensive administration tools for server configuration, user administration, backup, and much more.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n    http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n    http://yourhost:3000/?login=true\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/mysql-workbench"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "cap_add": [
+                "IPC_LOCK"
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/mysql-workbench-logo.png",
+            "network_mode": "bridge",
+            "type": 1
         }
     ]
 }
