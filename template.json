@@ -986,6 +986,462 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/duckdns.png",
             "network_mode": "host",
             "type": 1
+        },
+        {
+            "title": "Duplicati",
+            "name": "duplicati",
+            "image": "linuxserver/duplicati",
+            "description": "Duplicati works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.\n\nduplicati",
+            "platform": "linux",
+            "note": "The webui is at <your ip>:8200 , create backup jobs etc via the webui, for local backups select /backups as the destination. For more information see Duplicati.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8200:8200/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/duplicati"
+                },
+                {
+                    "container": "/backups",
+                    "bind": "/path/to/backups"
+                },
+                {
+                    "container": "/source",
+                    "bind": "/path/to/source"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000",
+                    "label": ""
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/duplicati-icon.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Emby",
+            "name": "emby",
+            "image": "linuxserver/emby",
+            "description": "Emby organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+            "platform": "linux",
+            "note": "Webui can be found at http://<your-ip>:8096\n\nEmby has very complete and verbose documentation located here .\n\nHardware acceleration users for Intel Quicksync and AMD VAAPI will need to mount their /dev/dri video device inside of the container by passing the following command when running or creating the container:\n\n--device=/dev/dri:/dev/dri\n\nWe will automatically ensure the abc user inside of the container has the proper permissions to access this device.\n\nHardware acceleration users for Nvidia will need to install the container runtime provided by Nvidia on their host, instructions can be found here:\n\nhttps://github.com/NVIDIA/nvidia-docker\n\nWe automatically add the necessary environment variable that will utilise all the features available on a GPU on the host. Once nvidia-docker is installed on your host you will need to re/create the docker container with the nvidia container runtime --runtime=nvidia and add an environment variable -e NVIDIA_VISIBLE_DEVICES=all (can also be set to a specific gpu's UUID, this can be discovered by running nvidia-smi --query-gpu=gpu_name,gpu_uuid --format=csv ). NVIDIA automatically mounts the GPU and drivers from your host into the emby docker.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8096:8096/tcp",
+                "8920:8920/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/emby"
+                },
+                {
+                    "container": "/data/tvshows",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                },
+                {
+                    "container": "/data/movies",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                },
+                {
+                    "container": "/opt/vc/lib",
+                    "bind": "/opt/vc/lib"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/emby-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "EmbyStat",
+            "name": "embystat",
+            "image": "linuxserver/embystat",
+            "description": "Embystat is a personal web server that can calculate all kinds of statistics from your (local) Emby server. Just install this on your server and let him calculate all kinds of fun stuff.",
+            "platform": "linux",
+            "note": "Access the webui at <your-ip>:6555. Follow the setup wizard on initial install. Then configure the required services.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "6555:6555/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/embystat"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/embystat-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Endlessh",
+            "name": "endlessh",
+            "image": "linuxserver/endlessh",
+            "description": "Endlessh is an SSH tarpit that very slowly sends an endless, random SSH banner. It keeps SSH clients locked up for hours or even days at a time. The purpose is to put your real SSH server on another port and then let the script kiddies get stuck in this tarpit instead of bothering a real server.",
+            "platform": "linux",
+            "note": "The app listens on the port mapped for ssh connections. To log to file, set the environment variable LOGFILE to true and map a volume for /config. The logs will be under /config/logs/endlessh.",
+            "ports": [
+                "22:2222/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/endlessh"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "MSDELAY",
+                    "default": "10000",
+                    "label": "optional"
+                },
+                {
+                    "name": "MAXLINES",
+                    "default": "32",
+                    "label": "optional"
+                },
+                {
+                    "name": "MAXCLIENTS",
+                    "default": "4096",
+                    "label": "optional"
+                },
+                {
+                    "name": "LOGFILE",
+                    "default": "false",
+                    "label": "optional"
+                },
+                {
+                    "name": "BINDFAMILY",
+                    "default": "",
+                    "label": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/endlessh.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "FIleZilla Client",
+            "name": "filezilla",
+            "image": "linuxserver/filezilla",
+            "description": "FIleZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n    http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n    http://yourhost:3000/?login=true\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/filezilla"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/filezilla-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Firefox",
+            "name": "firefox",
+            "image": "linuxserver/firefox",
+            "description": "Firefox Browser, also known as Mozilla Firefox or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards.",
+            "platform": "linux",
+            "note": "The application can be accessed at:\n\n    http://yourhost:3000/\n\nBy default the user/pass is abc/abc, if you change your password or want to login manually to the GUI session for any reason use the following link:\n\n    http://yourhost:3000/?login=true\n",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/firefox"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "sysctls": [
+                {
+                    "shm_size": "1gb"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/firefox-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Folding@home",
+            "name": "foldingathome",
+            "image": "linuxserver/foldingathome",
+            "description": "Folding@home is a distributed computing project for simulating protein dynamics, including the process of protein folding and the movements of proteins implicated in a variety of diseases. It brings together citizen scientists who volunteer to run simulations of protein dynamics on their personal computers. Insights from this data are helping scientists to better understand biology, and providing new opportunities for developing therapeutics.",
+            "platform": "linux",
+            "note": "This image sets up the Folding@home client. The interface is available at http://your-ip:7396.\n\nThe built-in webserver provides very basic control (ie. GPUs are only active when set to Medium or higher). For more fine grained control of individual devices, you can use the FAHControl app on a different device and connect remotely via port 36330 (no password).\n\nThere are a couple of minor issues with the webgui:\n\n    If you get an \"ERR_EMPTY_RESPONSE\" error when trying to access via IP, it's most likely due to a clash of cookies/cache. Try opening in an incgnito window.\n    If you're getting a constant refresh of the window but no display of info, try a force refresh via shft-F5 or ctrl-F5.\n",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "7396:7396/tcp",
+                "/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/foldingathome"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/folding-at-home-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "FreshRSS",
+            "name": "freshrss",
+            "image": "linuxserver/freshrss",
+            "description": "Freshrss is a free, self-hostable aggregator for rss feeds.",
+            "platform": "linux",
+            "note": "Access the webui set up wizard at http://serverIP:port\n\nFor external databases, create a user and database in your mysql/mariadb server (not root) and then follow the setup wizard in the webui. Use the IP address for \"host\" of your database server.\n\nAdditional extensions can be dropped into /config/www/freshrss/extensions and will be active after container restart.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/freshrss"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/freshrss-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Grav",
+            "name": "grav",
+            "image": "linuxserver/grav",
+            "description": "Grav is a Fast, Simple, and Flexible, file-based Web-platform.",
+            "platform": "linux",
+            "note": "For more information check out the Grav documentation (https://learn.getgrav.org/). Our image includes the grav-admin (https://github.com/getgrav/grav-plugin-admin) plugin.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/grav"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/grav-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Grocy",
+            "name": "grocy",
+            "image": "linuxserver/grocy",
+            "description": "Grocy is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this brilliant utility.\n\nKeep track of your purchases, how much food you are wasting, what chores need doing and what batteries need charging with this proudly Open Source tool\n\nFor more information on grocy visit their website and check it out: https://grocy.info",
+            "platform": "linux",
+            "note": "Grocy is simple to get running. Configure the container with instructions below, start it, and you can then access it by visiting http://your.ip:9283 - once the page loads, you can log in with the default username and password of admin / admin",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9283:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/grocy"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/grocy.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Guacd",
+            "name": "guacd",
+            "image": "linuxserver/guacd",
+            "description": "Guacd - Apache Guacamole is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. This container is only the backend server component needed to use The official or 3rd party HTML5 frontends.",
+            "platform": "linux",
+            "note": "This is a backend only service, to leverage Guacd server you need to use either the official Java frontend guacamole-client or an open source alterantive like guacamole-lite.",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "4822:4822/tcp"
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/guacd.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Habridge",
+            "name": "habridge",
+            "image": "linuxserver/habridge",
+            "description": "Habridge emulates Philips Hue API to other home automation gateways such as an Amazon Echo/Dot Gen 1 (gen 2 has issues discovering ha-bridge) or other systems that support Philips Hue. The Bridge handles basic commands such as \"On\", \"Off\" and \"brightness\" commands of the hue protocol. This bridge can control most devices that have a distinct API.",
+            "platform": "linux",
+            "note": "To set up the ha-bridge simply go to http://localhost:8080. Once you are in the webui you can add devices and configure ha-bridge to your liking.\n\nFor information on how to configure ha-bridge, go to their wiki at https://github.com/bwssytems/ha-bridge/wiki",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8076/tcp",
+                "50000:50000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/habridge"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "SEC_KEY",
+                    "default": "<Your Key To Encrypt Security Data>"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/habridge.png",
+            "network_mode": "bridge",
+            "type": 1
         }
     ]
 }
