@@ -1,1 +1,89 @@
-
+{
+    "version": "2",
+    "templates": [
+        {
+            "title": "Adguardhome-sync",
+            "name": "adguardhome-sync",
+            "image": "linuxserver/adguardhome-sync",
+            "description": "Adguardhome-sync is a tool to synchronize AdGuardHome config to replica instances.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/adguardhome-sync"
+                }
+            ],
+            "env": [
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna",
+                    "description": "Specify a timezone to use",
+                    "label": ""
+                },
+                {
+                    "name": "PUID",
+                    "default": "1000",
+                    "description": "User ID to run as "
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000",
+                    "description": "Group ID to run as"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/adguardhomesync-icon.png?token=ANVETBEMUC4XHER3MLLTQ7LBFXLSG",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Airsonic",
+            "name": "airsonic",
+            "image": "linuxserver/airsonic",
+            "description": "Airsonic is a free, web-based media streamer, providing ubiquitious access to your music.",
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "4040:4040/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/airsonic"
+                },
+                {
+                    "container": "/music",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/music"
+                },
+                {
+                    "container": "/playlists",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/playlists"
+                },
+                {
+                    "container": "/podcasts",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/podcasts"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/airsonic-banner.png?token=ANVETBBS354MEUT4HJ3GI6TBFXMXO",
+            "network_mode": "bridge",
+            "type": 1
+        }
+    ]
+}
