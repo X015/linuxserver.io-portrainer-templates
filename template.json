@@ -2873,6 +2873,695 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/openssh-logo.png",
             "network_mode": "bridge",
             "type": 1
+        },
+        {
+            "title": "OSCam",
+            "name": "oscam",
+            "image": "linuxserver/oscam",
+            "description": "Oscam is an Open Source Conditional Access Module software used for descrambling DVB transmissions using smart cards. It's both a server and a client.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/oscam",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8888:8888/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/oscam"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/dev/ttyUSB0",
+                    "host": "/dev/ttyUSB0"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/oscam-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Overseerr",
+            "name": "overseerr",
+            "image": "linuxserver/overseerr",
+            "description": "Overseerr is a free and open source software application for managing requests for your media library.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/overseerr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "5055:5055/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/overseerr"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/overseerr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Paperless-NG",
+            "name": "paperless-ng",
+            "image": "linuxserver/paperless-ng",
+            "description": "Paperless-ng is an application by Daniel Quinn and contributors that indexes your scanned documents and allows you to easily search for documents and store metadata alongside your documents.\"\n\npaperless-ng",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/paperless-ng",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/paperless-ng"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "REDIS_URL",
+                    "default": "#optional",
+                    "description": "REDIS_URL",
+                    "label": "Specify an external redis instance to use. Can optionally include a port (redis:6379) and/or db (redis/foo). If left blank or not included, will use a built-in redis instance. If changed after initial setup will also require manual modification of /config/settings.py"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/paperless-ng-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Papermerge",
+            "name": "papermerge",
+            "image": "linuxserver/papermerge",
+            "description": "Papermerge is an open source document management system (DMS) primarily designed for archiving and retrieving your digital documents. Instead of having piles of paper documents all over your desk, office or drawers - you can quickly scan them and configure your scanner to directly upload to Papermerge DMS.\"",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/papermerge",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/papermerge"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "REDIS_URL",
+                    "default": "#optional",
+                    "description": "REDIS_URL",
+                    "label": "Specify an external redis instance to use. Can optionally include a port (redis:6379) and/or db (redis/foo). If left blank or not included, will use a built-in redis instance. If changed after initial setup will also require manual modification of /config/settings.py"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/papermerge-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "PhotoShow",
+            "name": "photoshow",
+            "image": "linuxserver/photoshow",
+            "description": "Photoshow is gallery software at its easiest, it doesn't even require a database.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/photoshow",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/photoshow"
+                },
+                {
+                    "container": "/Pictures:ro",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/fotos"
+                },
+                {
+                    "container": "/Thumbs",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/photoshow/thumbs"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/photoshow-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "phpMyAdmin",
+            "name": "phpmyadmin",
+            "image": "linuxserver/phpmyadmin",
+            "description": "Phpmyadmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. phpMyAdmin supports a wide range of operations on MySQL and MariaDB.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/phpmyadmin",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/phpmyadmin"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PMA_ARBITRARY",
+                    "default": "1",
+                    "description": "PMA_ARBITRARY #optional",
+                    "label": "Set to 1 to allow you to connect to any server. Setting to 0 will only allow you to connect to specified hosts (See Application Setup)"
+                },
+                {
+                    "name": "PMA_ABSOLUTE_URI",
+                    "default": "https://phpmyadmin.example.com",
+                    "description": "PMA_ABSOLUTE_URI #optional",
+                    "label": "Set the URL you will use to access the web frontend"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/phpmyadmin-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pidgin",
+            "name": "pidgin",
+            "image": "linuxserver/pidgin",
+            "description": "Pidgin is a chat program which lets you log into accounts on multiple chat networks simultaneously. This means that you can be chatting with friends on XMPP and sitting in an IRC channel at the same time.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pidgin",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/pidgin"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pidgin-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Piwigo",
+            "name": "piwigo",
+            "image": "linuxserver/piwigo",
+            "description": "Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/piwigo",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/piwigo"
+                },
+                {
+                    "container": "/gallery",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/fotos"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/piwigo-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pixapop",
+            "name": "pixapop",
+            "image": "linuxserver/pixapop",
+            "description": "Pixapop is an open-source single page application to view your photos in the easiest way possible.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pixapop",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/pixapop"
+                },
+                {
+                    "container": "/photos",
+                    "bind": " /srv/dev-disk-by-id-md-name-Nexus-0/privat/fotos"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "APP_USERNAME",
+                    "default": "admin",
+                    "description": "APP_USERNAME",
+                    "label": "optional"
+                },
+                {
+                    "name": "APP_PASSWORD",
+                    "default": "admin",
+                    "description": "APP_PASSWORD",
+                    "label": "optional"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pixapop-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Plex",
+            "name": "plex",
+            "image": "linuxserver/plex",
+            "description": "Plex organizes video, music and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone Plex Media Server. has always been a top priority. Straightforward design and bulk actions mean getting things done faster.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/plex",
+            "restart_policy": "unless-stopped",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/plex"
+                },
+                {
+                    "container": "/movies",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "PLEX_CLAIM",
+                    "default": "#optional",
+                    "description": "PLEX_CLAIM",
+                    "label": "Optionally you can obtain a claim token from https://plex.tv/claim and input here. Keep in mind that the claim tokens expire within 4 minutes."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/plex-logo.png",
+            "network_mode": "host",
+            "type": 1
+        },
+        {
+            "title": "ProjectSend",
+            "name": "projectsend",
+            "image": "linuxserver/projectsend",
+            "description": "Projectsend is a self-hosted application that lets you upload files and assign them to specific clients that you create yourself. Secure, private and easy. No more depending on external services or e-mail to send those files.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/projectsend",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/projectsend"
+                },
+                {
+                    "container": "/data",
+                    "bind": " /srv/dev-disk-by-id-md-name-Nexus-0/privat/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "MAX_UPLOAD",
+                    "default": "5000",
+                    "description": "MAX_UPLOAD",
+                    "label": "To set maximum upload size (in MB), default if unset is 5000."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/projectsend-logo.jpg",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Prowlarr",
+            "name": "prowlarr",
+            "image": "linuxserver/prowlarr",
+            "description": "Prowlarr is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. It integrates seamlessly with Sonarr, Radarr, Lidarr, and Readarr offering complete management of your indexers with no per app Indexer setup required (we do it all).",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/prowlarr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9696:9696/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/prowlarr"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/prowlarr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pwndrop",
+            "name": "pwndrop",
+            "image": "linuxserver/pwndrop",
+            "description": "Pwndrop is a self-deployable file hosting service for sending out red teaming payloads or securely sharing your private files over HTTP and WebDAV.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pwndrop",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/pwndrop"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "SECRET_PATH",
+                    "default": "/pwndrop #optional",
+                    "description": "SECRET_PATH",
+                    "label": "Secret path for admin access. Defaults to /pwndrop. This parameter only takes effect during initial install; it can later be changed in the web gui."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pwndrop-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pydio-Cells",
+            "name": "pydio-cells",
+            "image": "linuxserver/pydio-cells",
+            "description": "Pydio-cells is the nextgen file sharing platform for organizations. It is a full rewrite of the Pydio project using the Go language following a micro-service architecture.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pydio-cells",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp",
+                "33060:33060/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/pydio-cells"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "EXTERNALURL",
+                    "default": "yourdomain.url",
+                    "label": "The external url you would like to use to access Pydio Cells (Can be https://domain.url or https://IP:PORT).",
+                    "description": "EXTERNALURL"
+                },
+                {
+                    "name": "SERVER_IP",
+                    "default": "0.0.0.0",
+                    "description": "SERVER_IP",
+                    "label": "Enter the LAN IP of the docker server. Required for local access by IP, added to self signed cert as SAN (not required if accessing only through reverse proxy)."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pydio-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pyload",
+            "name": "pyload",
+            "image": "linuxserver/pyload",
+            "description": "Pyload is a Free and Open Source download manager written in Python and designed to be extremely lightweight, easily extensible and fully manageable via web.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pyload",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8000:8000/tcp",
+                "7227:7227/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/pyload"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pyload-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Pylon",
+            "name": "pylon",
+            "image": "linuxserver/pylon",
+            "description": "Pylon is a web based integrated development environment built with Node.js as a backend and with a supercharged JavaScript/HTML5 frontend, licensed under GPL version 3. This project originates from Cloud9 v2 project.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/pylon",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3131:3131/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/code",
+                    "bind": " /srv/dev-disk-by-id-md-name-Nexus-0/privat/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "GITURL",
+                    "default": "https://github.com/linuxserver/docker-pylon.git",
+                    "description": "GITURL",
+                    "label": "Specify a git repo to checkout on first startup"
+                },
+                {
+                    "name": "PYUSER",
+                    "default": "myuser #optional",
+                    "description": "PYUSER",
+                    "label": "Specify a basic auth user."
+                },
+                {
+                    "name": "PYPASS",
+                    "default": "mypass #optional",
+                    "description": "PYPASS",
+                    "label": "Specify a basic auth password."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pylon-logo.png",
+            "network_mode": "bridge",
+            "type": 1
         }
     ]
 }
