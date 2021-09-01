@@ -3562,6 +3562,1532 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/pylon-logo.png",
             "network_mode": "bridge",
             "type": 1
+        },
+        {
+            "title": "qBittorrent",
+            "name": "qbittorrent",
+            "image": "linuxserver/qbittorrent",
+            "description": "The Qbittorrent project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/qbittorrent",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "6881:6881/tcp",
+                "6881:6881/udp",
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/qbittorrent"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "WEBUI_PORT",
+                    "default": "8080",
+                    "label": "WEBUI_PORT"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/qbittorrent-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Quassel-Core",
+            "name": "quassel-core",
+            "image": "linuxserver/quassel-core",
+            "description": "Quassel-core is a modern, cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core.\n\nThis container handles the IRC connection (quasselcore) and requires a desktop client (quasselclient) to be used and configured. It is designed to be always on and will keep your identity present in IRC even when your clients cannot be online. Backlog (history) is downloaded by your client upon reconnection allowing infinite scrollback through time.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/quassel-core",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "4242:4242/tcp",
+                "113:10113/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/quassel-core"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "RUN_OPTS",
+                    "default": "--config-from-environment #optional",
+                    "label": "RUN_OPTS",
+                    "description": "Custom CLI options for Quassel"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/quassel-core-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Quassel-Web",
+            "name": "quassel-web",
+            "image": "linuxserver/quassel-web",
+            "description": "Quassel-web is a web client for Quassel. Note that a Quassel-Core instance is required, we have a container available here.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/quassel-web",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "64080:64080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/quassel-web"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "",
+                    "default": ""
+                },
+                {
+                    "name": "QUASSEL_CORE",
+                    "default": "192.168.1.10",
+                    "label": "QUASSEL_CORE"
+                },
+                {
+                    "name": "QUASSEL_PORT",
+                    "default": "4242",
+                    "label": "QUASSEL_PORT"
+                },
+                {
+                    "name": "URL_BASE",
+                    "default": "/quassel #optional",
+                    "label": "URL_BASE",
+                    "description": "Specify a url-base in reverse proxy setups ie. /quassel"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/quassel-core-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Radarr",
+            "name": "radarr",
+            "image": "linuxserver/radarr",
+            "description": "Radarr - A fork of Sonarr to work with movies à la Couchpotato.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/radarr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "7878:7878/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/radarr"
+                },
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/movies"
+                },
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/radarr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Raneto",
+            "name": "raneto",
+            "image": "linuxserver/raneto",
+            "description": "Raneto - is an open source Knowledgebase platform that uses static Markdown files to power your Knowledgebase.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/raneto",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/raneto"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/raneto-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Rdesktop",
+            "name": "rdesktop",
+            "image": "linuxserver/rdesktop",
+            "description": "Rdesktop - Ubuntu based containers containing full desktop environments in officially supported flavors accessible via RDP.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/rdesktop",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3389:3389/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/var/run/docker.sock",
+                    "bind": "/var/run/docker.sock"
+                },
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/rdesktop"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "command": [
+                "shm_size: \"1gb\""
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/rdesktop-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Readarr",
+            "name": "readarr",
+            "image": "linuxserver/readarr",
+            "description": "Readarr - Book Manager and Automation (Sonarr for Ebooks)",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/readarr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8787:8787/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/readarr"
+                },
+                {
+                    "container": "/books",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/books"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/readarr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Remmina",
+            "name": "remmina",
+            "image": "linuxserver/remmina",
+            "description": "Remmina is a remote desktop client written in GTK, aiming to be useful for system administrators and travellers, who need to work with lots of remote computers in front of either large or tiny screens. Remmina supports multiple network protocols, in an integrated and consistent user interface. Currently RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC are supported.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/remmina",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/remmina"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/remmina-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Requestrr",
+            "name": "requestrr",
+            "image": "linuxserver/requestrr",
+            "description": "Requestrr is a chatbot used to simplify using services like Sonarr/Radarr/Ombi via the use of chat.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/requestrr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "4545:4545/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/requestrr"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/requestrr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Resilio-Sync",
+            "name": "resilio-sync",
+            "image": "linuxserver/resilio-sync",
+            "description": "Resilio-sync (formerly BitTorrent Sync) uses the BitTorrent protocol to sync files and folders between all of your devices. There are both free and paid versions, this container supports both. There is an official sync image but we created this one as it supports user mapping to simplify permissions for volumes.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/resilio-sync",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8888:8888/tcp",
+                "55555:55555/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/resilio-sync"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/sync",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/resilio-sync-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Rsnapshot",
+            "name": "rsnapshot",
+            "image": "linuxserver/rsnapshot",
+            "description": "Rsnapshot is a filesystem snapshot utility based on rsync. rsnapshot makes it easy to make periodic snapshots of local machines, and remote machines over ssh. The code makes extensive use of hard links whenever possible, to greatly reduce the disk space required.\"",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/rsnapshot",
+            "restart_policy": "unless-stopped",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/rsnapshot"
+                },
+                {
+                    "container": "/.snapshots",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/rsnapshot/snapshots"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/rsnapshot/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/rsnapshot-logo.webp",
+            "type": 1
+        },
+        {
+            "title": "SABnzbd",
+            "name": "sabnzbd",
+            "image": "linuxserver/sabnzbd",
+            "description": "Sabnzbd makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/sabnzbd",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp",
+                "9090:9090/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/sabnzbd"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/incomplete-downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads/intermediate"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/sabnzbd-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Scrutiny",
+            "name": "scrutiny",
+            "image": "linuxserver/scrutiny",
+            "description": "Scrutiny WebUI for smartd S.M.A.R.T monitoring. Scrutiny is a Hard Drive Health Dashboard & Monitoring solution, merging manufacturer provided S.M.A.R.T metrics with real-world failure rates from Backblaze.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/scrutiny",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8080:8080/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/scrutiny"
+                },
+                {
+                    "container": "/run/udev:ro",
+                    "bind": "/run/udev"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "SCRUTINY_API_ENDPOINT",
+                    "default": "http://localhost:8080",
+                    "description": "# optional - API endpoint of the scrutiny UI. Do not change unless using as a remote collector",
+                    "label": "SCRUTINY_API_ENDPOINT"
+                },
+                {
+                    "name": " SCRUTINY_WEB",
+                    "default": "true",
+                    "label": " SCRUTINY_WEB",
+                    "description": "# optional - Run the web service."
+                },
+                {
+                    "name": "SCRUTINY_COLLECTOR",
+                    "default": "true",
+                    "label": "SCRUTINY_COLLECTOR",
+                    "description": "# optional - Run the metrics collector."
+                }
+            ],
+            "devices": [
+                {
+                    "container": "/dev/sda",
+                    "host": "/dev/sda"
+                },
+                {
+                    "container": "/dev/sdb",
+                    "host": "/dev/sdb"
+                },
+                {
+                    "container": "/dev/sdc",
+                    "host": "/dev/sdc"
+                },
+                {
+                    "container": "/dev/sdd",
+                    "host": "/dev/sdd"
+                },
+                {
+                    "container": "/dev/sde",
+                    "host": "/dev/sde"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/scrutiny-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "SickChill",
+            "name": "sickchill",
+            "image": "linuxserver/sickchill",
+            "description": "Sickchill is an Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/sickchill",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8081:8081/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/sickchill"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/sickchell-logo.jpg",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "SickGear",
+            "name": "sickgear",
+            "image": "linuxserver/sickgear",
+            "description": "SickGear provides management of TV shows and/or Anime, it detects new episodes, links downloader apps, and more..",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/sickgear",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8081:8081/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/sickgear"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/sickgear-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "SmokePing",
+            "name": "smokeping",
+            "image": "linuxserver/smokeping",
+            "description": "Smokeping keeps track of your network latency. For a full example of what this application is capable of visit UCDavis.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/smokeping",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/smokeping"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/smokeping/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/smokeping-logo.webp",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Snapdrop",
+            "name": "snapdrop",
+            "image": "linuxserver/snapdrop",
+            "description": "Snapdrop A local file sharing in your browser. Inspired by Apple's Airdrop.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/snapdrop",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/snapdrop"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/snapdrop-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Sonarr",
+            "name": "sonarr",
+            "image": "linuxserver/sonarr",
+            "description": "Sonarr (formerly NZBdrone) is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/sonarr",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8989:8989/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/sonarr"
+                },
+                {
+                    "container": "/tv",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/sonarr-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "SQLite Browser",
+            "name": "sqlitebrowser",
+            "image": "linuxserver/sqlitebrowser",
+            "description": "DB Browser for SQLite is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/sqlitebrowser",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/sqlitebrowser"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/sqlite-browser-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "SyncLounge",
+            "name": "synclounge",
+            "image": "linuxserver/synclounge",
+            "description": "Synclounge is a third party tool that allows you to watch Plex in sync with your friends/family, wherever you are.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/synclounge",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8088:8088/tcp"
+            ],
+            "env": [
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "AUTH_LIST",
+                    "default": "plexuser1,plexuser2,email1,machineid1 #optional",
+                    "label": "AUTH_LIST",
+                    "description": "If set, only the users defined here and the users of the plex servers defined here will be able to access the server. Use e-mails, plex usernames and/or plex server machine ids, comma separated, no spaces."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/synclounge-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Syncthing",
+            "name": "syncthing",
+            "image": "linuxserver/syncthing",
+            "description": "Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized. Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/syncthing",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8384:8384/tcp",
+                "22000:22000/tcp",
+                "22000:22000/udp",
+                "21027:21027/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/syncthing"
+                },
+                {
+                    "container": "/data1",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/data1"
+                },
+                {
+                    "container": "/data2",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/privat/data2"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/syncthing-logo.png",
+            "type": 1
+        },
+        {
+            "title": "Syslog-NG",
+            "name": "syslog-ng",
+            "image": "linuxserver/syslog-ng",
+            "description": "syslog-ng allows you to flexibly collect, parse, classify, rewrite and correlate logs from across your infrastructure and store or route them to log analysis tools.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/syslog-ng",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "514:5514/udp",
+                "601:6601/tcp",
+                "6514:6514/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/syslog-ng"
+                },
+                {
+                    "container": "/var/log",
+                    "bind": "/path/to/log"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/syslog-ng-logo.png",
+            "type": 1
+        },
+        {
+            "title": "Taisun",
+            "name": "taisun",
+            "image": "linuxserver/taisun",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/taisun",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/var/run/docker.sock",
+                    "bind": "/var/run/docker.sock"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/taisun-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Tautulli",
+            "name": "tautulli",
+            "image": "linuxserver/tautulli",
+            "description": "Tautulli is a python based web application for monitoring, analytics and notifications for Plex Media Server.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/tautulli",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8181:8181/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/tautulli"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/tautulli-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "TheLounge",
+            "name": "thelounge",
+            "image": "linuxserver/thelounge",
+            "description": "Thelounge (a fork of shoutIRC) is a web IRC client that you host on your own server.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/thelounge",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9000:9000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/thelounge"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/thelounge-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Transmission",
+            "name": "transmission",
+            "image": "linuxserver/transmission",
+            "description": "Transmission is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/transmission",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9091:9091/tcp",
+                "51413:51413/tcp",
+                "51413:51413/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/transmission"
+                },
+                {
+                    "container": "/downloads",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                },
+                {
+                    "container": "/watch",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/transmission/watch"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "TRANSMISSION_WEB_HOME",
+                    "default": "/combustion-release/ #optional",
+                    "label": "TRANSMISSION_WEB_HOME",
+                    "description": "Specify an alternative UI options are /combustion-release/, /transmission-web-control/, /kettu/ and /flood-for-transmission/."
+                },
+                {
+                    "name": "USER",
+                    "default": "username #optional",
+                    "label": "USER",
+                    "description": "Specify an optional username for the interface"
+                },
+                {
+                    "name": "PASS",
+                    "default": "password #optional",
+                    "label": "PASS",
+                    "description": "Specify an optional password for the interface"
+                },
+                {
+                    "name": "WHITELIST",
+                    "default": "iplist #optional",
+                    "label": "WHITELIST",
+                    "description": "Specify an optional list of comma separated ip whitelist. Fill rpc-whitelist setting."
+                },
+                {
+                    "name": "HOST_WHITELIST",
+                    "default": "dnsnane list #optional",
+                    "label": "HOST_WHITELIST",
+                    "description": " \tSpecify an optional list of comma separated dns name whitelist. Fill rpc-host-whitelist setting."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/transmission-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Tvheadend",
+            "name": "TVheadend",
+            "image": "linuxserver/tvheadend",
+            "description": "Tvheadend works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources. Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming. Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/tvheadend",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "9981:9981/tcp",
+                "9982:9982/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/tvheadend"
+                },
+                {
+                    "container": "/recordings",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/tv/recordings"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "RUN_OPTS",
+                    "default": "<run options here> #optional",
+                    "label": "RUN_OPTS",
+                    "description": "Optionally specify additional arguments to be passed. See Additional runtime parameters."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/tvheadend-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Ubooquity",
+            "name": "ubooquity",
+            "image": "linuxserver/ubooquity",
+            "description": "Ubooquity is a free, lightweight and easy-to-use home server for your comics and ebooks. Use it to access your files from anywhere, with a tablet, an e-reader, a phone or a computer.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/ubooquity",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "2202:2202/tcp",
+                "2203:2203/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/ubooquity"
+                },
+                {
+                    "container": "/books",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/books"
+                },
+                {
+                    "container": "/comics",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/comics"
+                },
+                {
+                    "container": "/files",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/downloads"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "MAXMEM",
+                    "default": "1024",
+                    "label": "MAXMEM",
+                    "description": "To set the maximum memory. ( ex: set '1024' for 1GB )"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/ubooquity-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": " Unifi-Controller",
+            "name": "unifi-controller",
+            "image": "linuxserver/unifi-controller",
+            "description": "LSIO CI\n\nThe Unifi-controller Controller software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/unifi-controller",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3478:3478/udp",
+                "10001:10001/udp",
+                "8080:8080/tcp",
+                "8443:8443/tcp",
+                "1900:1900/udp",
+                "6789:6789/tcp",
+                "5514:5514/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/unifi-controller"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "MEM_LIMIT",
+                    "default": "1024M #optional",
+                    "label": "MEM_LIMIT",
+                    "description": "Optionally change the Java memory limit (-Xmx) (default is 1024M)."
+                },
+                {
+                    "name": "MEM_STARTUP",
+                    "default": "1024M #optional",
+                    "label": "MEM_STARTUP",
+                    "description": "Optionally change the Java initial memory (-Xms) (default is 1024M)."
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/unifi-controller-logo.png",
+            "type": 1
+        },
+        {
+            "title": "WebGrab+Plus",
+            "name": "webgrabplus",
+            "image": "linuxserver/webgrabplus",
+            "description": "Webgrabplus is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from selected tvguide sites for your favourite channels.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/webgrabplus",
+            "restart_policy": "unless-stopped",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/webgrabplus"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/webgrabplus/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/webgrabplus-logo.jpg",
+            "network_mode": "host",
+            "type": 1
+        },
+        {
+            "title": "Webtop",
+            "name": "webtop",
+            "image": "linuxserver/webtop",
+            "description": "Webtop - Alpine and Ubuntu based containers containing full desktop environments in officially supported flavors accessible via any modern web browser.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/webtop",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/webtop"
+                },
+                {
+                    "container": "/var/run/docker.sock",
+                    "bind": "/var/run/docker.sock"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "SUBFOLDER",
+                    "default": "/ #optional",
+                    "label": "SUBFOLDER",
+                    "description": "Specify a subfolder to use with reverse proxies, IE /subfolder/"
+                }
+            ],
+            "command": [
+                "--shm-size=\"1gb\""
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/webtop-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Wiki.js",
+            "name": "wikijs",
+            "image": "linuxserver/wikijs",
+            "description": "Wikijs A modern, lightweight and powerful wiki app built on NodeJS.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/wikijs",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/wikijs"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/wikijs/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/wikijs-logo.jpg",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "WireGuard",
+            "name": "wireguard",
+            "image": "linuxserver/wireguard",
+            "description": "WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/wireguard",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "51820:51820/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/wireguard"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "SERVERURL",
+                    "default": "wireguard.domain.com #optional",
+                    "label": "SERVERURL",
+                    "description": "External IP or domain name for docker host. Used in server mode. If set to auto, the container will try to determine and set the external IP automatically"
+                },
+                {
+                    "name": "SERVERPORT",
+                    "default": "51820 #optional",
+                    "label": "SERVERPORT",
+                    "description": "External port for docker host. Used in server mode."
+                },
+                {
+                    "name": "PEERS",
+                    "default": "#optional",
+                    "label": "PEERS",
+                    "description": "Number of peers to create confs for. Required for server mode. Can be a list of names too: myPC,myPhone,myTablet..."
+                },
+                {
+                    "name": "PEERDNS",
+                    "default": "auto #optional",
+                    "label": "PEERDNS",
+                    "description": "DNS server set in peer/client configs (can be set as 8.8.8.8). Used in server mode. Defaults to auto, which uses wireguard docker host's DNS via included CoreDNS forward."
+                },
+                {
+                    "name": "INTERNAL_SUBNET",
+                    "default": "10.13.13.0 #optional",
+                    "label": "INTERNAL_SUBNET",
+                    "description": "Internal subnet for the wireguard and server and peers (only change if it clashes). Used in server mode."
+                },
+                {
+                    "name": "ALLOWEDIPS",
+                    "default": "0.0.0.0/0 #optional",
+                    "label": "ALLOWEDIPS",
+                    "description": "The IPs/Ranges that the peers will be able to reach using the VPN connection. If not specified the default value is: '0.0.0.0/0, ::0/0' This will cause ALL traffic to route through the VPN, if you want split tunneling, set this to only the IPs you would like to use the tunnel AND the ip of the server's WG ip, such as 10.13.13.1."
+                }
+            ],
+            "sysctls": [
+                {
+                    "net.ipv4.conf.all.src_valid_mark": "1"
+                }
+            ],
+            "cap_add": [
+                "SYS_MODULE",
+                "NET_ADMIN"
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/wireguard-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Wireshark",
+            "name": "wireshark",
+            "image": "linuxserver/wireshark",
+            "description": "Wireshark is the world’s foremost and widely-used network protocol analyzer. It lets you see what’s happening on your network at a microscopic level and is the de facto (and often de jure) standard across many commercial and non-profit enterprises, government agencies, and educational institutions. Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe and is the continuation of a project started by Gerald Combs in 1998.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/wireshark",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "3000:3000/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/wireshark"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "cap_add": [
+                "NET_ADMIN"
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/wireshark-logo.png",
+            "network_mode": "host",
+            "type": 1
+        },
+        {
+            "title": "XBackBone",
+            "name": "xbackbone",
+            "image": "linuxserver/xbackbone",
+            "description": "Xbackbone is a simple, self-hosted, lightweight PHP file manager that support the instant sharing tool ShareX and *NIX systems. It supports uploading and displaying images, GIF, video, code, formatted text, and file downloading and uploading. Also have a web UI with multi user management, past uploads history and search support.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/xbackbone",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/xbackbone"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/xbackbone-logo.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "ZNC",
+            "name": "znc",
+            "image": "linuxserver/znc",
+            "description": "Znc is an IRC network bouncer or BNC. It can detach the client from the actual IRC server, and also from selected channels. Multiple clients from different locations can connect to a single ZNC account simultaneously and therefore appear under the same nickname on IRC.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/znc",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "6501:6501/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/znc"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "GUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/znc-logo.png",
+            "network_mode": "bridge",
+            "type": 1
         }
     ]
 }
