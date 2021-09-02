@@ -5125,9 +5125,6 @@
                     "default": "Europe/Vienna"
                 }
             ],
-            "command": [
-                "depends_on: chevereto-db"
-            ],
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/chevereto.png",
             "network_mode": "bridge",
             "type": 1
