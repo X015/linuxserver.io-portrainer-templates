@@ -5177,11 +5177,6 @@
                     "label": "MYSQL_PASSWORD"
                 }
             ],
-            "sysctls": [
-                {
-                    "": ""
-                }
-            ],
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/db-logo.png",
             "type": 1
         }
