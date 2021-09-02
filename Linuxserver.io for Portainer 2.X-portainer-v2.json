@@ -5088,6 +5088,102 @@
             "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/znc-logo.png",
             "network_mode": "bridge",
             "type": 1
+        },
+        {
+            "title": "Chevereto",
+            "name": "chevereto",
+            "image": "/linuxserver/chevereto",
+            "description": "Chevereto is an image hosting software that allows you to create a beautiful and full-featured image hosting website on your own server. It's your hosting and your rules, so say goodbye to closures and restrictions.",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/chevereto",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "80:80/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/chevereto"
+                },
+                {
+                    "container": "/data",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/chevereto/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/chevereto.png",
+            "network_mode": "bridge",
+            "type": 1
+        },
+        {
+            "title": "Chevereto-db",
+            "name": "chevereto-db",
+            "image": "linuxserver/mariadb",
+            "description": "Database for Chevereto",
+            "platform": "linux",
+            "note": "https://hub.docker.com/r/linuxserver/chevereto",
+            "restart_policy": "unless-stopped",
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/srv/dev-disk-by-id-md-name-Nexus-0/appdata/chevereto-db"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Europe/Vienna"
+                },
+                {
+                    "name": "MYSQL_ROOT_PASSWORD",
+                    "default": "<yourrootpass>",
+                    "label": "MYSQL_ROOT_PASSWORD"
+                },
+                {
+                    "name": "MYSQL_DATABASE",
+                    "default": "chevereto",
+                    "label": "MYSQL_DATABASE"
+                },
+                {
+                    "name": "MYSQL_USER",
+                    "default": "chevereto",
+                    "label": "MYSQL_USER"
+                },
+                {
+                    "name": "MYSQL_PASSWORD",
+                    "default": "<yourdbpass>",
+                    "label": "MYSQL_PASSWORD"
+                }
+            ],
+            "sysctls": [
+                {
+                    "": ""
+                }
+            ],
+            "logo": "https://raw.githubusercontent.com/X015/linuxserver.io-portrainer-templates/main/logos/db-logo.png",
+            "type": 1
         }
     ]
 }
