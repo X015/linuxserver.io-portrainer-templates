@@ -37,7 +37,7 @@ Search for "/srv/dev-disk-by-id-md-name-Nexus-0/tv replace with path to your tv 
    
 # Screenshots:
 
-![Screenshot](/screenshot/screenshot.png)
+![Screenshot](/screenshots/screenshot.png)
 
 Source: https://github.com/SelfhostedPro/selfhosted_templates/tree/OMV5  
 BIG TY to @ https://github.com/SelfhostedPro for the Idea!!
