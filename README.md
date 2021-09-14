@@ -1,4 +1,4 @@
-![Badge]https://img.shields.io/badge/foo-bar-blue
+![Badge](https://img.shields.io/badge/foo-bar-blue)
 
 # Portainer 2.0 Application Template for Docker
 
